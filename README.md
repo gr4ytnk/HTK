@@ -1,10 +1,10 @@
 ## 「もしもし」という音声を認識させてみる
 
-※入力となるものは斜体とした  
+※入力となるものは太字、出力となるものは斜体とした  
 
 ### STEP1 音素のリストと辞書を作成する
 
-HDMan -m -w *wlist* -n monophones1 -l dlog dict *beep*
+HDMan -m -w **wlist** -n *monophones1* -l *dlog* *dict* **beep**
 
 * wlist
 ```
@@ -14,23 +14,30 @@ SISHAMO
 ```
 
 * beep  
-`MOSIMO          mo si mo sp`  
-`MOSIMOSI        mo si mo si sp`  
-`SISHAMO         si sja mo sp`  
-`silence         sil`  
+```
+MOSIMO          mo si mo sp
+MOSIMOSI        mo si mo si sp
+SISHAMO         si sja mo sp
+silence         sil
+```
 
 * global.ded  
-`AS  sp`
+```
+AS  sp
+```
 
 実行すると下記ファイルができる  
 
 * monophones1  
-`mo`  
-`si`  
-`sp`  
-`sja`  
+```
+mo
+si
+sp
+sja
+```
 
-* dlog 
+* dlog  
+(要確認)beep.ded  
 ```
 WARNING: no script file beep.ded
 
@@ -51,6 +58,7 @@ New Phone Usage Counts
 
 Dictionary dict created
 ```
+
 * dict 
 ```
 MOSIMO      mo si mo
