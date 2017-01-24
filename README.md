@@ -4,7 +4,59 @@
 
 ### STEP1 音素のリストと辞書を作成する
 
-HDMan -m -w *wlist* -n monophones1 -l dlog *dict* *beep*
+HDMan -m -w *wlist* -n monophones1 -l dlog dict *beep*
+
+* wlist
+```
+MOSIMO 
+MOSIMOSI
+SISHAMO
+```
+
+* beep  
+`MOSIMO          mo si mo sp`  
+`MOSIMOSI        mo si mo si sp`  
+`SISHAMO         si sja mo sp`  
+`silence         sil`  
+
+* global.ded  
+`AS  sp`
+
+実行すると下記ファイルができる  
+
+* monophones1  
+`mo`  
+`si`  
+`sp`  
+`sja`  
+
+* dlog 
+```
+WARNING: no script file beep.ded
+
+Dictionary Usage Statistics
+---------------------------
+  Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
+        beep         3          3          3          3
+        dict         3          3          3          3
+
+3 words required, 0 missing
+
+New Phone Usage Counts
+---------------------
+  1. mo    :     5
+  2. si    :     4
+  3. sp    :     3
+  4. sja   :     1
+
+Dictionary dict created
+```
+* dict 
+```
+MOSIMO      mo si mo
+MOSIMOSI	mo si mo si  
+SISHAMO     si sja mo
+```
 
 ### STEP2 音響特徴抽出
 
