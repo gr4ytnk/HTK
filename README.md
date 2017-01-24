@@ -1,11 +1,12 @@
-<ケース>
-「もしもし」という音声を認識させてみる
+# 「もしもし」という音声を認識させてみる
 
-*** <STEP1> 音素のリストと辞書を作成する
+※入力となるものは斜体とした  
 
-HDMan -m -w <i>wlist</i> -n <i>monophones1</i> -l <i>dlog</i> dict beep
+## <STEP1> 音素のリストと辞書を作成する
 
-*** <STEP2> 音響特徴抽出
+HDMan -m -w *wlist* -n monophones1 -l dlog *dict* *beep*
+
+## <STEP2> 音響特徴抽出
 
 HCopy -C <i>config</i> ***.wav ***.mfc
 あるいは
@@ -17,7 +18,7 @@ HCopy -A -D -T 1 -C <i>config</i> -S <i>script</i>
  (OUTPUT)
 
 
-<STEP3>平均の初期モデルを作る
+## <STEP3>平均の初期モデルを作る
 
 HCompV -D <config> -f 0.01 -m -S <trainlist> -M <hmm00> <proto> <hai.hmm>
 
@@ -31,7 +32,7 @@ HCompV -D <config> -f 0.01 -m -S <trainlist> -M <hmm00> <proto> <hai.hmm>
  (memo)
    「-f」を付けないとvFloorsができない
 
-<STEP4>音素ラベルファイルを作成する（初期モデルを全音素の初期値とする）
+## <STEP4>音素ラベルファイルを作成する（初期モデルを全音素の初期値とする）
 
 HLEd -l '*' -d dict -i [phones0.mlf] <mkphones0.led> <words.mlf>
 
@@ -42,7 +43,7 @@ HLEd -l '*' -d dict -i [phones0.mlf] <mkphones0.led> <words.mlf>
  (OUTPUT)
    phones0.mlf
 
-<STEP5>音素HMMを推定（この段階ではspは無視？）
+## <STEP5>音素HMMを推定（この段階ではspは無視？）
 
 HERest -C <config> -I <phones0.mlf> -t 250.0 150.0 1000.0 -S <trainlist.txt>
        -H hmm0/macro
@@ -55,6 +56,6 @@ HERest -C <config> -I <phones0.mlf> -t 250.0 150.0 1000.0 -S <trainlist.txt>
    monophones0 : HDMan で作ったもの
  (OUTPUT)
 
-<STEP6>spモデルを作成する
+## <STEP6>spモデルを作成する
 
-<STEP7>spの位置を推定
+## <STEP7>spの位置を推定
