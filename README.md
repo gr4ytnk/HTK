@@ -2,6 +2,77 @@
 
 ※入力となるものは太字、出力となるものは斜体とした  
 
+### STEP5 音素HMMを推定（この段階ではspは無視？）
+
+HERest -C **config** -I **phones0.mlf** -t 250.0 150.0 1000.0 -S **trainlist.txt** -H **hmm0/macro** -H **hmm0/hmmdefs** -M *hmm1* **monophones0**
+
+* config  
+
+* phones0.mlf  
+前のSTEPで作ったもの
+
+* trainlist.txt
+
+* hmm0/macro
+
+* hmm0/hmmdefs
+
+「hmm1」フォルダの下に下記ファイルができる
+
+* macro
+
+* vFloors
+
+
+### STEP4 音素ラベルファイルを作成する（初期モデルを全音素の初期値とする）  
+
+HLEd -l '\*' -d **dict** -i *phones0.mlf* **mkphones0.led** **words.mlf**
+
+* dict  
+前のSTEPで作ったもの
+
+* mkphones0.led
+
+```
+EX
+IS  sil sil
+DE  sp
+```
+
+* words.mlf
+```
+#!MLF!#
+"mosi1.lab"
+MOSIMOSI
+.
+```
+* mosi1.lab
+```
+mosi1.lab mo si mo si
+````
+下記のファイルができる
+
+* phones0.mlf
+```
+#!MLF!#
+"*/mosi1.lab"
+sil
+mo
+si
+mo
+si
+sil
+.
+```
+
+
+ (INPUT)
+   dict : 単語の音素ラベル辞書
+   mkphones0.led : スクリプト
+   words.mlf : 音声ファイル中に出現する単語を記述
+ (OUTPUT)
+   phones0.mlf
+
 
 ### STEP2 音響特徴抽出
 
@@ -31,9 +102,9 @@ HList -r **mosi1.mfc** | head -n 1
 
 ### STEP3 平均の初期モデルを作る
 
-HCompV -C **config_for_HCompV** -f 0.01 -m -S **trainlist.txt** -M *hmm0* **proto**
+HCompV -C **config.HCompV** -f 0.01 -m -S **trainlist.txt** -M *hmm0* **proto**
 
-* config_for_HCompV
+* config.HCompV
 
 * proto
 
@@ -120,29 +191,7 @@ hmm0フォルダの下に「macro」、「proto」、「vFloors」が作られ�
 (memo)  
    「-f」を付けないとvFloorsができない  
 
-### STEP4 音素ラベルファイルを作成する（初期モデルを全音素の初期値とする）
 
-HLEd -l '*' -d dict -i phones0.mlf mkphones0.led words.mlf
-
- (INPUT)
-   dict : 単語の音素ラベル辞書
-   mkphones0.led : スクリプト
-   words.mlf : 音声ファイル中に出現する単語を記述
- (OUTPUT)
-   phones0.mlf
-
-### STEP5 音素HMMを推定（この段階ではspは無視？）
-
-HERest -C <config> -I <phones0.mlf> -t 250.0 150.0 1000.0 -S <trainlist.txt>
-       -H hmm0/macro
-       -H hmm0/hmmdefs
-       -M hmm1 monophones0
-
- (INPUT)
-   macro : 
-   hmmdefs : 
-   monophones0 : HDMan で作ったもの
- (OUTPUT)
 
 ### STEP6 spモデルを作成する
 
