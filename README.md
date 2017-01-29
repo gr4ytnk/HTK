@@ -142,8 +142,50 @@ TB 350.0 "ST_si_2_" {("si","*-si+*","si+*","*-si").state[2]}
 TB 350.0 "ST_sil_2_" {("sil","*-sil+*","sil+*","*-sil").state[2]}
 ```
 
+HHEd -H macro -H vFloors -M *siage0* tree.hed triphone1 > log
+
+* siage0/macro
+```
+~t "T_mo"
+<TRANSP> 5
+ 0.000000e+00 1.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00
+ 0.000000e+00 8.865071e-01 1.134929e-01 0.000000e+00 0.000000e+00
+ 0.000000e+00 0.000000e+00 7.228720e-01 2.771280e-01 0.000000e+00
+ 0.000000e+00 0.000000e+00 0.000000e+00 8.943085e-01 1.056915e-01
+ 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00
+```
+
+* siage0/vFloors
+```
+~h "si-sja+mo"
+<BEGINHMM>
+<NUMSTATES> 5
+<STATE> 2
+~s "ST_sja_2_1"
+<STATE> 3
+~s "ST_sja_3_1"
+<STATE> 4
+~s "ST_sja_4_1"
+~t "T_sja"
+<ENDHMM>
+```
+
+* log
+```
+TB 350.00 ST_mo_2_ {}
+ Tree based clustering
+ Start  mo[2] : 4  have LogL=-70.635 occ=141.0
+
+ Via    mo[2] : 1 gives LogL=-70.635 occ=141.0
+
+ End    mo[2] : 1 gives LogL=-70.635 occ=141.0
+
+ TB: Stats 4->1 [25.0%]  { 4->1 [25.0%] total }
+```
+
 ### STEP8 
 
+HVite -T 1 -l '\*' -a -b silence -m -C config -H macro -H vFloors -I words.mlf -i *output* -S trainlist.txt dict tiedlist
 
 ### STEP1 音素のリストと辞書を作成する
 
