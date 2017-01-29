@@ -185,7 +185,21 @@ TB 350.00 ST_mo_2_ {}
 
 ### STEP8 
 
-HVite -T 1 -l '\*' -a -b silence -m -C config -H macro -H vFloors -I words.mlf -i *output* -S trainlist.txt dict tiedlist
+HVite -T 1 -l '\*' -a -b silence -m -C config.HCompV -H macro -H vFloors -I words.mlf -i *aligned.out* -S trainlist.txt dict tiedlist
+
+* aligned.out
+```
+#!MLF!#
+"*/mosi1.rec"
+0 200000 sil -279.824188 silence
+200000 2800000 mo -1869.756226 MOSIMOSI
+2800000 3100000 si -219.233734
+3100000 5600000 mo -1718.051392
+5600000 14300000 si -6934.035156
+14300000 14900000 sp -389.244385
+14900000 19800000 sil -2579.965576 silence
+.
+```
 
 ### STEP1 音素のリストと辞書を作成する
 
