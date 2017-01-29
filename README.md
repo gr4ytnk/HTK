@@ -8,7 +8,7 @@
 
 ### STEP6 トライフォン  
 
-音素の３つ組を作成する  
+音素の３つ組を作成する(making Triphones from Monophones)  
 HLEd -i *tri.mlf* **mktri.led** **aligned.mlf**
 
 * mktri.led  
@@ -22,7 +22,7 @@ TC
 * aliged.mlf (前のSTEPで作成)
 ```
 #!MLF!#
-"*/mosi1.lab"
+"mfcc/mosi1.lab"
 sil
 mo
 si
@@ -117,9 +117,32 @@ sja-mo
 
 ### STEP7 
 
+「monophones1」と「triphones1」をsort/uniq
 
+* fulllist
+```
+mo
+mo+si
+mo-si
+mo-si+mo
+si
+si+sja
+si-mo
+si-mo+si
+si-sja+mo
+sil
+sja
+sja-mo
+sp
+```
+* tree.hed
+```
+TB 350.0 "ST_mo_2_" {("mo","*-mo+*","mo+*","*-mo").state[2]}
+TB 350.0 "ST_si_2_" {("si","*-si+*","si+*","*-si").state[2]}
+TB 350.0 "ST_sil_2_" {("sil","*-sil+*","sil+*","*-sil").state[2]}
+```
 
-
+### STEP8 
 
 
 ### STEP1 音素のリストと辞書を作成する
