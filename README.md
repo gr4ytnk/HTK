@@ -9,7 +9,50 @@
 
 ### STEP8 認識
 
-HVite -T 1 -l '\*' -a -b silence -m -C config.HCompV -H macro -H vFloors -I words.mlf -i *aligned.out* -S trainlist.txt dict tiedlist
+helpからの抜粋
+USAGE: HVite [options] VocabFile HMMList DataFiles...
+
+* VocabFile  
+単語
+```
+MOSIMO          mo si mo sp
+MOSIMOSI        mo si mo si sp
+SISHAMO         si sja mo sp
+```
+
+* HMMList  
+音素(phoneme、ある言語における音声上の最小の単位)
+```
+mo
+si
+sp
+si-sja+mo
+mo+si mo
+mo-si si
+si-mo+si mo
+mo-si+mo si
+sja-mo mo
+sil
+sja si-sja+mo
+si+sja si
+si-mo mo
+```
+
+* DataFiles  
+認識させたいファイル（mfccの形式である必要があるか？）
+mosi1.mfc  
+mosi1.lab  
+
+HVite -H macro -H vFloors dict tiedlist mfcc/mosi1.mfc
+
+-> mfcc/mosi1.recが出来る
+
+* mfcc/mosi1.rec
+`0 19800000 MOSIMOSI -14510.470703`
+
+(?)何の言葉か分からないから認識させたいのに、labファイルを作成してやらないといけないのか？
+
+HVite -T 1 -l '\*' -a -b silence -m -C config.HCompV -H **macro** -H **vFloors** -I **words.mlf** -i *aligned.out* -S trainlist.txt **dict** **tiedlist**
 
 * aligned.out
 ```
