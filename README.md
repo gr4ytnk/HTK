@@ -51,6 +51,10 @@ HVite -H macro -H vFloors dict tiedlist mfcc/mosi1.mfc
 `0 19800000 MOSIMOSI -14510.470703`
 
 (?)何の言葉か分からないから認識させたいのに、labファイルを作成してやらないといけないのか？
+`ERROR [+6510]  LOpen: Unable to open label file mfcc/mosi1.lab`  
+
+ラベルを置く代わりに、Iオプションでmaster label fileを渡してもよい  
+`$ HVite -H macro -H vFloors -I words.mlf dict tiedlist mfcc/mosi2.mfc`
 
 HVite -T 1 -l '\*' -a -b silence -m -C config.HCompV -H **macro** -H **vFloors** -I **words.mlf** -i *aligned.out* -S trainlist.txt **dict** **tiedlist**
 
