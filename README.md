@@ -76,7 +76,9 @@ HVite -H macro -H vFloors dict tiedlist mfcc/mosi1.mfc
  470〜1400 930ミリ秒 si  
 1400〜1910 510ミリ秒 mo  
 1910〜1940  30ミリ秒 si  
-1940〜1980  40ミリ秒 sp
+1940〜1980  40ミリ秒 sp  
+右側の数値は「the acoustic score」、音響値？  
+(http://www.ee.columbia.edu/ln/LabROSA/doc/HTKBook21/node143.html)
 
 `mo + si + mo + si + sp`＝`(+ -3246.088379 -7289.562012 -3454.942383 -248.850174 -246.163406)`  
 ＝`-14485.606354`
