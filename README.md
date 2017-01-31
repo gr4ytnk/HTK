@@ -53,8 +53,51 @@ HVite -H macro -H vFloors dict tiedlist mfcc/mosi1.mfc
 (?)何の言葉か分からないから認識させたいのに、labファイルを作成してやらないといけないのか？
 `ERROR [+6510]  LOpen: Unable to open label file mfcc/mosi1.lab`  
 
+->「alignment」とは、音素の"位置合わせ"のことか？
+
 ラベルを置く代わりに、Iオプションでmaster label fileを渡してもよい  
 `$ HVite -H macro -H vFloors -I words.mlf dict tiedlist mfcc/mosi2.mfc`
+
+* -m オプション(output model alignment)
+
+```
+#!MLF!#
+"mfcc/mosi2.rec"
+       0  4700000 mo -3246.088379 MOSIMOSI
+ 4700000 14000000 si -7289.562012
+14000000 19100000 mo -3454.942383
+19100000 19400000 si  -248.850174
+19400000 19800000 sp  -246.163406
+.
+```
+
+`mo + si + mo + si + sp`  
+`(+ -3246.088379 -7289.562012 -3454.942383 -248.850174 -246.163406)`  
+`-14485.606354`  
+
+* -f オプション(output full state alignment)
+
+```
+#!MLF!#
+"mfcc/mosi2.rec"
+       0 3200000  mo[2] -2178.502930 MOSIMOSI
+ 3200000 4600000  mo[3]  -929.046326
+ 4600000 4700000  mo[4]  -138.539261
+ 4700000 8900000  si[2] -3666.271973
+ 8900000 13900000 si[3] -3540.026367
+13900000 14000000 si[4]   -83.263969
+14000000 14100000 mo[2]   -72.989716
+14100000 19000000 mo[3] -3293.463379
+19000000 19100000 mo[4]   -88.489365
+19100000 19200000 si[2]   -85.120781
+19200000 19300000 si[3]   -82.539459
+19300000 19400000 si[4]   -81.441299
+19400000 19500000 sp[3]   -65.942635
+19500000 19800000 sp[4]  -179.969391
+.
+```
+`mo[2] + mo[3] + mo[4] = -3246.088517`  
+`si[2] + si[3] + si[4] = -7289.562309`    
 
 HVite -T 1 -l '\*' -a -b silence -m -C config.HCompV -H **macro** -H **vFloors** -I **words.mlf** -i *aligned.out* -S trainlist.txt **dict** **tiedlist**
 
