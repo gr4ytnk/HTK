@@ -9,10 +9,17 @@
 [音声メディア研究室 HMM 作成メモ]
 http://izanami.tl.fukuoka-u.ac.jp/SLPL/HMM/HMM-memo.html
 
+[VoxForge]
+http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/tutorial
+
+[HTKBook]
+http://www.ee.columbia.edu/ln/LabROSA/doc/HTKBook21/HTKBook.html
+
 ### STEP9 評価
 
 helpからの抜粋
 USAGE: HResults [options] labelList recFiles...
+
 
 ```
 $ HResults -I words.mlf tiedlist  mfcc/mosi1.rec mfcc/mosi2.rec
@@ -62,7 +69,8 @@ si-mo mo
 ```
 
 * DataFiles  
-認識させたいファイル（mfccの形式である必要があるか？）
+認識させたいファイル（mfccの形式である必要があるか？）  
+(TODO)ここで、modelを作った時とは別の音声ファイルを使うべきか
 mosi1.mfc  
 mosi1.lab  
 
