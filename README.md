@@ -7,6 +7,27 @@
 (?)sil.hed  
 
 
+### STEP9 評価
+
+helpからの抜粋
+USAGE: HResults [options] labelList recFiles...
+
+```
+$ HResults -I words.mlf tiedlist  mfcc/mosi1.rec mfcc/mosi2.rec
+====================== HTK Results Analysis =======================
+  Date: Thu Feb  2 07:53:53 2017
+  Ref : words.mlf
+  Rec : mfcc/mosi1.rec
+      : mfcc/mosi2.rec
+------------------------ Overall Results --------------------------
+SENT: %Correct=100.00 [H=2, S=0, N=2]
+WORD: %Corr=100.00, Acc=100.00 [H=2, D=0, S=0, I=0, N=2]
+===================================================================
+```
+
+recFileはHViteのalignmentに関するオプション(-fとか-m)無しのもの`0 19800000 MOSIMOSI -14510.470703`  
+-Iオプションは正解を記したファイルを渡す  
+
 ### STEP8 認識
 
 helpからの抜粋
