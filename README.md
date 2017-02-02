@@ -1,21 +1,22 @@
 ## 「もしもし」という音声を認識させてみる
 
+
+
 ※入力となるものは太字、出力となるものは斜体とした  
 
 (?)spモデルを作成する    
 (?)spの位置を推定  
 (?)sil.hed  
 
-[link TEST](https://github.com/gr4ytnk/making_sound_2/blob/master/alsa_sample.c)
+[Julius](http://julius.osdn.jp/)
 
-[音声メディア研究室 HMM 作成メモ]
-http://izanami.tl.fukuoka-u.ac.jp/SLPL/HMM/HMM-memo.html
+[音声メディア研究室 HMM 作成メモ](http://izanami.tl.fukuoka-u.ac.jp/SLPL/HMM/HMM-memo.html)
 
-[VoxForge]
-http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/tutorial
+[VoxForge](http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/tutorial)
 
-[HTKBook]
-http://www.ee.columbia.edu/ln/LabROSA/doc/HTKBook21/HTKBook.html
+[HTKBook](http://www.ee.columbia.edu/ln/LabROSA/doc/HTKBook21/HTKBook.html)
+
+mlf拡張子ファイル -> 音声ファイル中に出てくる音素を書き表したもの
 
 ### STEP9 評価
 
@@ -57,7 +58,9 @@ SISHAMO         si sja mo sp
 ```
 
 * HMMList  
-音素(phoneme、ある言語における音声上の最小の単位)
+音素(phoneme、ある言語における音声上の最小の単位)  
+※厳密には、「mo」は「m」と「o」に分けるんだろうけど、ここは簡略化する  
+
 ```
 mo
 si
@@ -89,6 +92,8 @@ HVite -H macro -H vFloors dict tiedlist mfcc/mosi1.mfc
 
 (?)何の言葉か分からないから認識させたいのに、labファイルを作成してやらないといけないのか？
 `ERROR [+6510]  LOpen: Unable to open label file mfcc/mosi1.lab`  
+
+-> HTKの役割はHMMを作るところまでか。認識はJuliusとかを使う  
 
 ->「alignment」とは、音素の"位置合わせ"のことか？
 
