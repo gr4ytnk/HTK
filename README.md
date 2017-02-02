@@ -6,6 +6,8 @@
 (?)spの位置を推定  
 (?)sil.hed  
 
+[link TEST](https://github.com/gr4ytnk/making_sound_2/blob/master/alsa_sample.c)
+
 [音声メディア研究室 HMM 作成メモ]
 http://izanami.tl.fukuoka-u.ac.jp/SLPL/HMM/HMM-memo.html
 
@@ -34,8 +36,12 @@ WORD: %Corr=100.00, Acc=100.00 [H=2, D=0, S=0, I=0, N=2]
 ===================================================================
 ```
 
-recFileはHViteのalignmentに関するオプション(-fとか-m)無しのもの`0 19800000 MOSIMOSI -14510.470703`  
+recFilesはHViteのalignmentオプション(-fとか-m)無しのもの（下の形式）  
+`0 19800000 MOSIMOSI -14510.470703`  
+
 -Iオプションは正解を記したファイルを渡す  
+
+
 
 ### STEP8 認識
 
